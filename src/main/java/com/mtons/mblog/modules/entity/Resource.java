@@ -47,7 +47,8 @@ public class Resource implements Serializable {
     @Generated(GenerationTime.INSERT)
     private LocalDateTime createTime;
 
-    @Column(name = "update_time", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+//    @Column(name = "update_time", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "update_time")
     @Generated(GenerationTime.ALWAYS)
     private LocalDateTime updateTime;
 

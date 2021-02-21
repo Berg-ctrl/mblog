@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 用户主页
  *
- * @author langhsu
+ * @author yangquan
  */
 @Controller
 @RequestMapping("/users")

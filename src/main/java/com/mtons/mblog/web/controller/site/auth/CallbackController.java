@@ -32,7 +32,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * 第三方登录回调
  *
- * @author langhsu
+ * @author yangquan
  */
 @Slf4j
 @Controller

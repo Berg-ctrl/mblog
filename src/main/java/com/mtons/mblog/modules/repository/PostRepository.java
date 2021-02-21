@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificationExecutor<Post> {
     /**

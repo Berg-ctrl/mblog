@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public interface LinksRepository extends JpaRepository<Links, Long>, JpaSpecificationExecutor<Links> {
 }

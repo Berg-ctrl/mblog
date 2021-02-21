@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Channel 主页
- * @author langhsu
+ * @author yangquan
  *
  */
 @Controller

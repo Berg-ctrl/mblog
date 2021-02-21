@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * @author : langhsu
+ * @author : yangquan
  */
 public interface TagService {
     Page<TagVO> pagingQueryTags(Pageable pageable);

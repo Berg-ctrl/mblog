@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 /**
  * 工具类
- * @author : landy
+ * @author : yangquan
  */
 @Slf4j
 public class BlogUtils {

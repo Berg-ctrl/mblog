@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 资源路径处理
- * @author langhsu
+ * @author yangquan
  */
 @Component
 public class ResourceDirective extends TemplateDirective {

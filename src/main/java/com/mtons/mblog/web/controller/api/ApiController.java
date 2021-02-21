@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * 侧边栏数据加载
  *
- * @author langhsu
+ * @author yangquan
  */
 @RestController
 @RequestMapping("/api")

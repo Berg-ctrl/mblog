@@ -15,7 +15,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import java.util.Set;
 
 /**
- * @author langhsu on 2015/8/6.
+ * @author yangquan on 2015/8/6.
  */
 public interface UserEventService {
     /**

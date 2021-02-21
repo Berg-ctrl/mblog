@@ -1,7 +1,7 @@
 package com.mtons.mblog.web.menu;
 
 /**
- * @author - langhsu
+ * @author - yangquan
  * @create - 2018/5/18
  */
 public class Menu {

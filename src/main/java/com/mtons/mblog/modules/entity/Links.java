@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * @author : landy
+ * @author : yangquan
  * @version : 1.0
  * @date : 2019/11/6
  */
@@ -20,11 +20,13 @@ public class Links {
     private String name;
     private String url;
 
-    @Column(name = "created", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+//    @Column(name = "created", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created")
     @Generated(GenerationTime.INSERT)
     private LocalDateTime created;
 
-    @Column(name = "updated", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+//    @Column(name = "updated", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "updated")
     @Generated(GenerationTime.ALWAYS)
     private LocalDateTime updateTime;
 

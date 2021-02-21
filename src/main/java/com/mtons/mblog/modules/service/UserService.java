@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author langhsu
+ * @author yangquan
  *
  */
 @CacheConfig(cacheNames = Consts.CACHE_USER)

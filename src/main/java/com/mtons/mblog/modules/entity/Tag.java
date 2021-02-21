@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * @author : langhsu
+ * @author : yangquan
  */
 @Entity
 @Table(name = "mto_tag")

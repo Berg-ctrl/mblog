@@ -19,7 +19,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author langhsu
+ * 评论管理
+ * @author yangquan
  *
  */
 public interface CommentService {

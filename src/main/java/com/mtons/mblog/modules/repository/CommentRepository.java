@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public interface CommentRepository extends JpaRepository<Comment, Long>, JpaSpecificationExecutor<Comment> {
 	Page<Comment> findAll(Pageable pageable);

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 登录
- * @author langhsu
+ * @author yangquan
  */
 @Controller
 public class LoginController extends BaseController {

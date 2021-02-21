@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mtons.mblog.modules.service.CommentService;
 
 /**
- * @author langhsu
+ * @author yangquan
  *
  */
 @Controller("adminCommentController")

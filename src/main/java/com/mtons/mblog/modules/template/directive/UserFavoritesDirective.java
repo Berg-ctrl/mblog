@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 /**
  * 根据作者取收藏列表
  *
- * @author landy
+ * @author yangquan
  * @since 3.0
  */
 @Component

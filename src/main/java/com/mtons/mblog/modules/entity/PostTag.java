@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  * 文章标签映射表
- * @author : langhsu
+ * @author : yangquan
  */
 @Entity
 @Table(name = "mto_post_tag", indexes = {

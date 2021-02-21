@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author langhsu
+ * @author yangquan
  *
  */
 @Controller("adminUserController")

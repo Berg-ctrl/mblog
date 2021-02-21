@@ -27,7 +27,7 @@ import org.springframework.web.util.HtmlUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 @RestController
 @RequestMapping("/comment")

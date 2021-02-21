@@ -21,7 +21,7 @@ import java.util.Set;
 
 /**
  * 用户事件操作, 用于统计用户信息
- * @author langhsu
+ * @author yangquan
  */
 @Service
 @Transactional(rollbackFor = Throwable.class)

@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * 评论
  *
- * @author langhsu
+ * @author yangquan
  */
 @Entity
 @Table(name = "mto_comment", indexes = {

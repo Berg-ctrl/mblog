@@ -16,7 +16,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public class CommentVO extends Comment implements Serializable {
 	private static final long serialVersionUID = 9192186139010913437L;

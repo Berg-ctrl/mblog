@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 文章操作
- * @author langhsu
+ * @author yangquan
  *
  */
 @Controller

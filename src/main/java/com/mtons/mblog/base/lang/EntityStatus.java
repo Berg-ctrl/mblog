@@ -10,7 +10,7 @@
 package com.mtons.mblog.base.lang;
 
 /**
- * @author langhsu
+ * @author yangquan
  *
  */
 public interface EntityStatus {

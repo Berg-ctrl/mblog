@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * shiro权限管理的配置
  *
- * @author langhsu
+ * @author yangquan
  * @since 3.0
  */
 @Configuration

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author langhsu on 2018/8/12.
+ * @author yangquan on 2018/8/12.
  */
 public interface PermissionRepository extends JpaRepository<Permission, Long>, JpaSpecificationExecutor<Permission> {
     List<Permission> findAllByParentId(int parentId, Sort sort);

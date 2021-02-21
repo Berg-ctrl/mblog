@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 /**
- * @author : langhsu
+ * @author : yangquan
  */
 @Repository
 public interface PostTagRepository extends JpaRepository<PostTag, Long>, JpaSpecificationExecutor<PostTag> {

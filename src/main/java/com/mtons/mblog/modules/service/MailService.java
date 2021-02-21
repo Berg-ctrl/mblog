@@ -3,7 +3,7 @@ package com.mtons.mblog.modules.service;
 import java.util.Map;
 
 /**
- * @author : langhsu
+ * @author : yangquan
  */
 public interface MailService {
     void config();

@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 @Component
 public class PostUpdateEventHandler implements ApplicationListener<PostUpdateEvent> {

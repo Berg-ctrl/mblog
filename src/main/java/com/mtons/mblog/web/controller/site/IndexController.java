@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mtons.mblog.web.controller.BaseController;
 
 /**
- * @author langhsu
+ * @author yangquan
  *
  */
 @Controller

@@ -3,7 +3,7 @@ package com.mtons.mblog.base.utils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author langhsu on 2015/9/6.
+ * @author yangquan on 2015/9/6.
  */
 @Slf4j
 public class Printer {

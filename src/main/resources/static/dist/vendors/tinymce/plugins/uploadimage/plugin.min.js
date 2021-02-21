@@ -1,6 +1,6 @@
 /**
  * tinymce plugin - upload image
- * Created by landy on 2018/02/08.
+ * Created by yangquan on 2018/02/08.
  */
 tinymce.PluginManager.add('uploadimage', function (editor) {
 

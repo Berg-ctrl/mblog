@@ -25,7 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 /**
- * @author langhsu
+ * @author yangquan
  * @since  3.0
  */
 @Slf4j

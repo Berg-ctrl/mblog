@@ -12,7 +12,7 @@ package com.mtons.mblog.web.controller.site;
 /**
  * 主题页面配置
  *
- * @author langhsu
+ * @author yangquan
  */
 public interface Views {
     /**

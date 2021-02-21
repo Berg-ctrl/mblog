@@ -23,7 +23,7 @@ import java.util.Date;
 
 /**
  * 内容表
- * @author langhsu
+ * @author yangquan
  *
  */
 @Entity

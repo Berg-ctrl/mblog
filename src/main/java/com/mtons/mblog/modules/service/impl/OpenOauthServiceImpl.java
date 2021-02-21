@@ -27,7 +27,7 @@ import java.util.Optional;
 
 /**
  * 第三方登录授权管理
- * @author langhsu on 2015/8/12.
+ * @author yangquan on 2015/8/12.
  */
 @Service
 @Transactional

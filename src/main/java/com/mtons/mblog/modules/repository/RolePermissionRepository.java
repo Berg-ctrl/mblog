@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 /**
- * @author - langhsu
+ * @author - yangquan
  * @create - 2018/5/18
  */
 public interface RolePermissionRepository extends JpaRepository<RolePermission, Long>, JpaSpecificationExecutor<RolePermission> {

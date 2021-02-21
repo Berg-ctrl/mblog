@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * method: [latest_posts, hottest_posts, latest_comments]
- * created by langhsu
+ * created by yangquan
  * on 2019/3/12
  */
 @Component

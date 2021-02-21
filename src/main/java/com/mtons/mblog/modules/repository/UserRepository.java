@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
     User findByUsername(String username);

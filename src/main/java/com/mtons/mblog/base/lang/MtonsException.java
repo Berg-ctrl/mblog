@@ -11,7 +11,7 @@ package com.mtons.mblog.base.lang;
 
 /**
  * 
- * @author langhsu
+ * @author yangquan
  *
  */
 public class MtonsException extends RuntimeException {

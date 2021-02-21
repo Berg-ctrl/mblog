@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public interface MessageRepository extends JpaRepository<Message, Long>, JpaSpecificationExecutor<Message> {
     Page<Message> findAllByUserId(Pageable pageable, long userId);

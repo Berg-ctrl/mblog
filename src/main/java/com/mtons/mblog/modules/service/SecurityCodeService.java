@@ -10,7 +10,7 @@
 package com.mtons.mblog.modules.service;
 
 /**
- * @author langhsu on 2015/8/14.
+ * @author yangquan on 2015/8/14.
  */
 public interface SecurityCodeService {
     /**

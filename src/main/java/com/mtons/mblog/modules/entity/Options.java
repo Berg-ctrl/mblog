@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 /**
  * 系统配置
- * @author langhsu
+ * @author yangquan
  *
  */
 @Entity

@@ -14,7 +14,7 @@ import java.beans.PropertyEditorSupport;
 import java.util.regex.Pattern;
 
 /**
- * Created by langhsu on 2017/9/2.
+ * Created by yangquan on 2017/9/2.
  */
 @Slf4j
 public class StringEscapeEditor extends PropertyEditorSupport {

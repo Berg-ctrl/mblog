@@ -28,7 +28,7 @@ import java.util.Set;
  * 请求：http://mtons.com/index?order=newest&pn=2
  * 使用：@contents group=x pn=pn order=order
  *
- * @author langhsu
+ * @author yangquan
  */
 @Component
 public class ContentsDirective extends TemplateDirective {

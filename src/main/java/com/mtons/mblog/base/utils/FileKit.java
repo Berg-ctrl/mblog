@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author - langhsu
+ * @author - yangquan
  * @create - 2018/3/9
  */
 public class FileKit {

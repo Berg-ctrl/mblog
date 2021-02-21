@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @author langhsu
+ * @author yangquan
  */
 public abstract class TemplateDirective implements TemplateDirectiveModel {
     protected static String RESULT = "result";

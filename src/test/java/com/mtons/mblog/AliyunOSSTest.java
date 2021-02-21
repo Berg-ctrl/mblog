@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * created by langhsu
+ * created by yangquan
  * on 2019/1/22
  */
 public class AliyunOSSTest {
