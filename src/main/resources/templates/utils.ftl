@@ -7,7 +7,13 @@
 
 <#-- 栏目名称显示 -->
 <#macro showChannel row>
-<span class=" hidden-xs label label-default <#if (row.featured > 0)>channel_featured</#if> <#if (row.weight > 0)>channel_top</#if>">${row.channel.name}</span>
+    <#if (row.weight > 0)>
+        <span class=" hidden-xs label label-default channel_featured">置顶</span>
+    <#elseif (row.featured > 0)>
+        <span class=" hidden-xs label label-default channel_featured">推荐</span>
+    <else>
+    </#if>
+<#--<span class=" hidden-xs label label-default <#if (row.featured > 0)>channel_featured</#if> <#if (row.weight > 0)>channel_top</#if>">${row.channel.name}</span>-->
 </#macro>
 
 <#-- 分页显示 -->

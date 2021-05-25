@@ -48,6 +48,12 @@
             <li class="list-group-item">
                 <a href="${base}/users/${user.id}/favorites"><i class="icon icon-heart"></i> 收藏的文章</a>
             </li>
+            <li class="list-group-item">
+                <a href="${base}/users/${user.id}/attention"><i class="icon icon-heart"></i> 关注的作者</a>
+            </li>
+            <li class="list-group-item">
+                <a href="${base}/users/${user.id}/fans"><i class="icon icon-heart"></i> 我的粉丝</a>
+            </li>
         </ul>
 
         <#if owner>

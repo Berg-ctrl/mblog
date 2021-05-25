@@ -26,7 +26,7 @@ public class SidebarDirective extends TemplateDirective {
 
     @Override
     public void execute(DirectiveHandler handler) throws Exception {
-        int size = handler.getInteger("size", 6);
+        Integer size = handler.getInteger("size", 6);
         String method = handler.getString("method", "post_latests");
         switch (method) {
             case "latest_posts":
@@ -37,6 +37,9 @@ public class SidebarDirective extends TemplateDirective {
                 break;
             case "latest_comments":
                 handler.put(RESULTS, commentService.findLatestComments(size));
+                break;
+            case "hot_posts":
+                handler.put(RESULTS, postService.findHotPosts(size));
                 break;
         }
         handler.render();

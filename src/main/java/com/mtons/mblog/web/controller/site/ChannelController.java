@@ -14,6 +14,7 @@ import com.mtons.mblog.base.utils.MarkdownUtils;
 import com.mtons.mblog.modules.data.PostVO;
 import com.mtons.mblog.modules.entity.Channel;
 import com.mtons.mblog.modules.entity.PostAttribute;
+import com.mtons.mblog.modules.repository.AttentionRepository;
 import com.mtons.mblog.modules.service.ChannelService;
 import com.mtons.mblog.modules.service.PostService;
 import com.mtons.mblog.web.controller.BaseController;
@@ -39,6 +40,9 @@ public class ChannelController extends BaseController {
 	private ChannelService channelService;
 	@Autowired
 	private PostService postService;
+
+	@Autowired
+	private AttentionRepository attentionRepository;
 	
 	@RequestMapping("/channel/{id}")
 	public String channel(@PathVariable Integer id, ModelMap model,
@@ -58,7 +62,7 @@ public class ChannelController extends BaseController {
 	@RequestMapping("/post/{id:\\d*}")
 	public String view(@PathVariable Long id, ModelMap model) {
 		PostVO view = postService.get(id);
-
+		view.setNum(attentionRepository.findAttentionCounts(view.getAuthorId()));
 		Assert.notNull(view, "该文章已被删除");
 
 		if ("markdown".endsWith(view.getEditor())) {

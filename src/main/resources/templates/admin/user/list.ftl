@@ -58,9 +58,9 @@
                                     <td class="text-center">
                                         <#if row.id != 1>
                                             <#if row.status == 0>
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-default" data-id="${row.id}" data-action="close">关闭</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-default" data-id="${row.id}" data-action="close">禁用</a>
                                             <#else>
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-success" data-id="${row.id}" data-action="open">激活</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-success" data-id="${row.id}" data-action="open">启用</a>
                                             </#if>
                                             <a href="${base}/admin/user/pwd?id=${row.id}" class="btn btn-xs btn-success">修改密码</a>
 

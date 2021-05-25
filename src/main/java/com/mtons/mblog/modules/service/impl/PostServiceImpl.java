@@ -21,11 +21,27 @@ import com.mtons.mblog.modules.repository.PostAttributeRepository;
 import com.mtons.mblog.modules.repository.PostResourceRepository;
 import com.mtons.mblog.modules.repository.PostRepository;
 import com.mtons.mblog.modules.service.*;
+import com.mtons.mblog.web.controller.BaseController;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.math3.optim.PointValuePair;
+import org.apache.mahout.cf.taste.common.TasteException;
+import org.apache.mahout.cf.taste.impl.model.jdbc.MySQLJDBCDataModel;
+import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
+import org.apache.mahout.cf.taste.impl.recommender.CachingRecommender;
+import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
+import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
+import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
+import org.apache.mahout.cf.taste.model.DataModel;
+import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
+import org.apache.mahout.cf.taste.recommender.RecommendedItem;
+import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -33,6 +49,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import javax.persistence.criteria.Predicate;
+import javax.sql.DataSource;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
@@ -64,6 +81,9 @@ public class PostServiceImpl implements PostService {
 	private PostResourceRepository postResourceRepository;
 	@Autowired
 	private ResourceRepository resourceRepository;
+
+	@Autowired
+	private DataSource dataSource;
 
     private static Pattern pattern = Pattern.compile("(?<=/_signature/)(.+?)(?=\\.)");
 
@@ -123,12 +143,29 @@ public class PostServiceImpl implements PostService {
 		return find("created", maxResults).stream().map(BeanMapUtils::copy).collect(Collectors.toList());
 	}
 	
+//	@Override
+//	@PostStatusFilter
+//	public List<PostVO> findHottestPosts(int maxResults) {
+//		return find("views", maxResults).stream().map(BeanMapUtils::copy).collect(Collectors.toList());
+//	}
+
 	@Override
 	@PostStatusFilter
-	public List<PostVO> findHottestPosts(int maxResults) {
-		return find("views", maxResults).stream().map(BeanMapUtils::copy).collect(Collectors.toList());
+	@CacheEvict(value = {Consts.CACHE_USER, Consts.CACHE_POST}, allEntries = true)
+	public List<PostVO> findHottestPosts(Integer userId) throws TasteException {
+//		if(BaseController.getProfile()!=null){
+//			return postIds(BaseController.getProfile().getId());
+//		}
+		return find("views", 3).stream().map(BeanMapUtils::copy).collect(Collectors.toList());
 	}
-	
+
+	@Override
+	@PostStatusFilter
+	@CacheEvict(value = {Consts.CACHE_USER, Consts.CACHE_POST}, allEntries = true)
+	public List<PostVO> findHotPosts(int maxResults) {
+		return find("favors", maxResults).stream().map(BeanMapUtils::copy).collect(Collectors.toList());
+	}
+
 	@Override
 	@PostStatusFilter
 	public Map<Long, PostVO> findMapByIds(Set<Long> ids) {
@@ -489,5 +526,43 @@ public class PostServiceImpl implements PostService {
 		}
 
 		return md5s;
+	}
+
+	private List<PostVO> postIds(Long id) throws TasteException {
+//		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+//        dataSourceBuilder.username("root");
+//        dataSourceBuilder.password("123");
+//        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+//        dataSourceBuilder.url("jdbc:mysql://localhost/db_mblog?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true");
+//        DataModel dataModel = new MySQLJDBCDataModel(dataSourceBuilder.build(), "mto_ratings", "user_id", "post_id", "rating", "timestamp");
+        DataModel dataModel = new MySQLJDBCDataModel(dataSource, "mto_ratings", "user_id", "post_id", "rating", "timestamp");
+//        /**
+//         * UserSimilarity 实现给出两个用户之间的相似度
+//         * 可以从多种可能度量或计算机中选一种作为依赖
+//         */
+        UserSimilarity similarity = new PearsonCorrelationSimilarity(dataModel);
+        // UserNeighborhood 实现   明确与给定用户最相似的一组用户
+        UserNeighborhood neighborhood =
+                new NearestNUserNeighborhood(2, similarity, dataModel);
+        /**
+         *
+         * 生成推荐引擎
+         * Recommender 合并所有的组件为用户推荐物品
+         *
+         */
+        Recommender recommender = new CachingRecommender(new GenericUserBasedRecommender(
+                    dataModel, neighborhood, similarity));
+        // 为用户1 推荐2件  物品
+        List<RecommendedItem> recommendations =
+                recommender.recommend(id, 3);
+        if(recommendations.size()==0) return find("views", 3).stream().map(BeanMapUtils::copy).collect(Collectors.toList());
+        List<PostVO> result = new ArrayList<>();
+        PostVO postVO = new PostVO();
+        for (RecommendedItem recommendation : recommendations) {
+            System.out.println("======="+recommendation.getItemID());
+            BeanUtils.copyProperties(postRepository.findById(recommendation.getItemID()).get(), postVO);
+            result.add(postVO);
+        }
+        return result;
 	}
 }

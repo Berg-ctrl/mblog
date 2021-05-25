@@ -68,7 +68,7 @@ public class BaseController {
      *
      * @return
      */
-    protected AccountProfile getProfile() {
+    public static AccountProfile getProfile() {
         Subject subject = SecurityUtils.getSubject();
         return (AccountProfile) subject.getPrincipal();
     }

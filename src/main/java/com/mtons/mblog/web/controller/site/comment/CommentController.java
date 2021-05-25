@@ -7,8 +7,10 @@ import com.mtons.mblog.base.lang.Consts;
 import com.mtons.mblog.base.lang.Result;
 import com.mtons.mblog.modules.data.AccountProfile;
 import com.mtons.mblog.modules.data.CommentVO;
+import com.mtons.mblog.modules.entity.Ratings;
 import com.mtons.mblog.modules.event.MessageEvent;
 import com.mtons.mblog.modules.service.CommentService;
+import com.mtons.mblog.modules.service.RatingsService;
 import com.mtons.mblog.web.controller.BaseController;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +41,9 @@ public class CommentController extends BaseController {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private RatingsService ratingsService;
+
     @RequestMapping("/list/{toId}")
     public Page<CommentVO> view(@PathVariable Long toId) {
         Pageable pageable = wrapPageable(Sort.by(Sort.Direction.DESC, "id"));
@@ -45,6 +51,7 @@ public class CommentController extends BaseController {
     }
 
     @RequestMapping("/submit")
+    @Transactional
     public Result post(Long toId, String text, HttpServletRequest request) {
         if (!isAuthenticated()) {
             return Result.failure("请先登录在进行操作");
@@ -66,7 +73,7 @@ public class CommentController extends BaseController {
         c.setPid(pid);
 
         commentService.post(c);
-
+        ratingsService.update(profile.getId(),toId);
         sendMessage(profile.getId(), toId, pid);
 
         return Result.successMessage("发表成功");

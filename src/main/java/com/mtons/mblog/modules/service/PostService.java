@@ -11,6 +11,7 @@ package com.mtons.mblog.modules.service;
 
 import com.mtons.mblog.base.lang.Consts;
 import com.mtons.mblog.modules.data.PostVO;
+import org.apache.mahout.cf.taste.common.TasteException;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -58,11 +59,16 @@ public interface PostService {
 
 	/**
 	 * 查询热门文章 - 按浏览次数排序
-	 * @param maxResults
+	 * @param userId
 	 * @return
 	 */
+	@Cacheable(key = "'hottest_' + 3")
+	List<PostVO> findHottestPosts(Integer userId) throws TasteException;
+//	@Cacheable(key = "'hottest_' + #maxResults")
+//	List<PostVO> findHottestPosts(int maxResults);
+
 	@Cacheable(key = "'hottest_' + #maxResults")
-	List<PostVO> findHottestPosts(int maxResults);
+	List<PostVO> findHotPosts(int maxResults);
 	
 	/**
 	 * 根据Ids查询

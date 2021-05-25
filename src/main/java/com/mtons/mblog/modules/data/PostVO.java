@@ -30,7 +30,16 @@ public class PostVO extends Post implements Serializable {
 
 	private UserVO author;
 	private Channel channel;
-	
+	private String num;
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
 	@JSONField(serialize = false)
 	private PostAttribute attribute;
 	

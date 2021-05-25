@@ -68,6 +68,27 @@ define(function(require, exports, module) {
 			}
 		});
 
+		// Attention
+		$('a[rel=attention]').click(function () {
+			var id = $(this).attr('data-id');
+
+			if (!Authc.isAuthced()) {
+				Authc.showLogin();
+				return false;
+			}
+
+			if (parseInt(id) > 0) {
+				jQuery.getJSON(_MTONS.BASE_PATH +'/user/attention', {'id': id}, function (ret) {
+					if (ret.code >=0) {
+						var attention = $('#attention').text();
+						$('#attention').text(parseInt(attention) + 1);
+					} else {
+						layer.msg(ret.message, {icon: 5});
+					}
+				});
+			}
+		});
+
 		//$(document).pjax('a[rel=pjax]', '#wrap', {
 		//	fragment: '#wrap',
 		//	timeout: 10000,

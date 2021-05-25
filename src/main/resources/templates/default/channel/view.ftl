@@ -41,12 +41,12 @@
                             </span>
                         </#list>
                     </div>
-                    <div class="panel-footer">
-                        <div class="hidden-xs">
-                            <div class="social-share" data-sites="qq, weibo, wechat, qzone, facebook, twitter, google"></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+<#--                    <div class="panel-footer">-->
+<#--                        <div class="hidden-xs">-->
+<#--                            <div class="social-share" data-sites="qq, weibo, wechat, qzone, facebook, twitter, google"></div>-->
+<#--                        </div>-->
+<#--                        <div class="clearfix"></div>-->
+<#--                    </div>-->
                 </div>
 
                 <!-- Comments -->
@@ -106,6 +106,10 @@
                         <div class="text-center">
                             <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="favor">
                                 <i class="icon icon-star"></i> 收藏 <strong id="favors">${view.favors}</strong>
+                            </a>
+<#--                            <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.author.id}" rel="attention">-->
+                            <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="attention">
+                                <i class="icon icon-star"></i> 关注 <strong id="attention">${view.num}</strong>
                             </a>
                         </div>
                     </li>

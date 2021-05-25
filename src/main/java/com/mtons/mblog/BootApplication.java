@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.jdbc.MySQLJDBCDataModel;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
+import org.apache.mahout.cf.taste.impl.recommender.CachingRecommender;
 import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
 import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
@@ -37,32 +38,36 @@ public class BootApplication {
 //        dataSourceBuilder.username("root");
 //        dataSourceBuilder.password("123");
 //        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSourceBuilder.url("jdbc:mysql://localhost/db_mblog?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8");
-//        DataModel dataModel = new MySQLJDBCDataModel(dataSourceBuilder.build(), "mto_ratings", "user_id", "post_id", "rating", "timestamp");
-//        /**
-//         * UserSimilarity 实现给出两个用户之间的相似度
-//         * 可以从多种可能度量或计算机中选一种作为依赖
-//         */
+//        dataSourceBuilder.url("jdbc:mysql://localhost/db_mblog?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true");
+//        DataModel dataModel = new MySQLJDBCDataModel(dataSourceBuilder.build(), "rate", "userId", "movieId", "rating", "time");
+////        /**
+////         * UserSimilarity 实现给出两个用户之间的相似度
+////         * 可以从多种可能度量或计算机中选一种作为依赖
+////         */
 //        UserSimilarity similarity = new PearsonCorrelationSimilarity(dataModel);
 //        // UserNeighborhood 实现   明确与给定用户最相似的一组用户
 //        UserNeighborhood neighborhood =
-//                new NearestNUserNeighborhood(2, similarity, dataModel);
+//                new NearestNUserNeighborhood(3, similarity, dataModel);
 //        /**
 //         *
 //         * 生成推荐引擎
 //         * Recommender 合并所有的组件为用户推荐物品
 //         *
 //         */
-//        Recommender recommender = new GenericUserBasedRecommender(
-//                dataModel, neighborhood, similarity);
-//        // 为用户1 推荐2件  物品
-//        List<RecommendedItem> recommendations =
-//                recommender.recommend(1, 1);
-//
-//        for (RecommendedItem recommendation : recommendations) {
-//            System.out.println("======="+recommendation.getItemID());
+//        try{
+//            Recommender recommender = new CachingRecommender(new GenericUserBasedRecommender(
+//                    dataModel, neighborhood, similarity));
+//            // 为用户x推荐y件物品
+//            List<RecommendedItem> recommendations =
+//                    recommender.recommend(100, 3);
+//            for (RecommendedItem recommendation : recommendations) {
+//                System.out.println("=======id="+recommendation.getItemID());
+//            }
+//        }catch (Exception e){
+//            System.out.println(e.getMessage()+"========");
 //        }
-//        GenericItemBasedRecommender genericItemBasedRecommender = new GenericItemBasedRecommender()
+
     }
+
 
 }
